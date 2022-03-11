@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import {
   fetchLanguageAndFrameworks,
   fetchProfile,
@@ -10,6 +9,7 @@ import styles from '../styles/Home.module.css';
 import { LanguageAndFramework } from '../types/languageAndFramework';
 import { Profile } from '../types/profile';
 import { Works } from '../types/works';
+import { eraseTags } from '../utils/eraseTags';
 
 type Props = {
   profile: Profile;
@@ -17,68 +17,43 @@ type Props = {
   works: Works[];
 };
 
+// TODO: 画像urlを発行してくれないので、imgをどこか外部ストレージのファイルurlにするか、Google Cloud Storageと連携するか
 const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>shochan.me</title>
+        <title>{profile.title}</title>
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href='https://nextjs.org'>Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>{profile.name}</h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <h2>about me</h2>
+        <p className={styles.description}>{eraseTags(profile.comment)}</p>
 
-        <div className={styles.grid}>
-          <a href='https://nextjs.org/docs' className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>
-              Find in-depth information about Next.js features and API. test `a
-              href`
+        <p className={styles.description}>{profile.github}</p>
+
+        <p className={styles.description}>{profile.twitter}</p>
+
+        <h2>skills</h2>
+        {languageAndFrameworks.map((item: LanguageAndFramework) => {
+          return (
+            <p key={item.name} className={styles.description}>
+              {item.name}
             </p>
-          </a>
+          );
+        })}
 
-          <a href='https://nextjs.org/learn' className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href='https://github.com/vercel/next.js/tree/canary/examples'
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+        <h2>works</h2>
+        {works.map((item: Works) => {
+          return (
+            <p key={item.name} className={styles.description}>
+              {item.name}
             </p>
-          </a>
-        </div>
+          );
+        })}
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <footer className={styles.footer}>{profile.title}</footer>
     </div>
   );
 };
