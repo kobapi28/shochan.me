@@ -1,4 +1,12 @@
 import AxiosDefaults from 'axios';
+import { LanguageAndFramework } from '../types/languageAndFramework';
+import { Profile } from '../types/profile';
+import {
+  LanguageAndFrameworkResponse,
+  ProfileResponse,
+  WorksResponse,
+} from '../types/ResponseType';
+import { Works } from '../types/works';
 
 const requests = {
   profile: 'profile',
@@ -13,20 +21,26 @@ const axios = AxiosDefaults.create({
   },
 });
 
-export const fetchProfile = async () => {
-  axios.get(`/${requests.profile}`).then((res) => {
-    console.log(res);
-  });
+export const fetchProfile = async (): Promise<Profile> => {
+  return await axios
+    .get(`/${requests.profile}`)
+    .then((res: ProfileResponse) => {
+      return res.data.items[0];
+    });
 };
 
-export const fetchLanguageAndFrameworks = async () => {
-  axios.get(`/${requests.languageAndFrameworks}`).then((res) => {
-    console.log(res);
-  });
+export const fetchLanguageAndFrameworks = async (): Promise<
+  LanguageAndFramework[]
+> => {
+  return await axios
+    .get(`/${requests.languageAndFrameworks}`)
+    .then((res: LanguageAndFrameworkResponse) => {
+      return res.data.items;
+    });
 };
 
-export const fetchWorks = async () => {
-  axios.get(`/${requests.works}`).then((res) => {
-    console.log(res);
+export const fetchWorks = async (): Promise<Works[]> => {
+  return await axios.get(`/${requests.works}`).then((res: WorksResponse) => {
+    return res.data.items;
   });
 };

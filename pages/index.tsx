@@ -7,12 +7,17 @@ import {
   fetchWorks,
 } from '../libs/fetch';
 import styles from '../styles/Home.module.css';
+import { LanguageAndFramework } from '../types/languageAndFramework';
+import { Profile } from '../types/profile';
+import { Works } from '../types/works';
 
 type Props = {
-  name: string;
+  profile: Profile;
+  languageAndFrameworks: LanguageAndFramework[];
+  works: Works[];
 };
 
-const Home: NextPage<Props> = ({ name }) => {
+const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -81,14 +86,20 @@ const Home: NextPage<Props> = ({ name }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = () => {
-  fetchProfile();
-  fetchLanguageAndFrameworks();
-  fetchWorks();
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const responses: Props = await Promise.all([
+    fetchProfile(),
+    fetchLanguageAndFrameworks(),
+    fetchWorks(),
+  ]).then((res) => {
+    return {
+      profile: res[0],
+      languageAndFrameworks: res[1],
+      works: res[2],
+    };
+  });
   return {
-    props: {
-      name: 'str',
-    },
+    props: responses,
   };
 };
 
