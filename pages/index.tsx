@@ -1,9 +1,18 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import {
+  fetchLanguageAndFrameworks,
+  fetchProfile,
+  fetchWorks,
+} from '../libs/fetch';
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+type Props = {
+  name: string;
+};
+
+const Home: NextPage<Props> = ({ name }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -70,6 +79,17 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps<Props> = () => {
+  fetchProfile();
+  fetchLanguageAndFrameworks();
+  fetchWorks();
+  return {
+    props: {
+      name: 'str',
+    },
+  };
 };
 
 export default Home;
