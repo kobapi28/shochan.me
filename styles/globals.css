@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Klee One', cursive;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif, 'Klee One', cursive;
 }
 
 a {
