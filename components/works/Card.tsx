@@ -10,7 +10,9 @@ const Card: React.VFC<Props> = ({ works }) => {
   return (
     <>
       <p>{works.name}</p>
-      <p>{works.role}</p>
+      {works.role.map((r) => {
+        return <p key={r}>{r}</p>;
+      })}
       <p>{eraseTags(works.introduction)}</p>
       <p>{works.github || 'undefined'}</p>
       <p>{works.slide || 'undefined'}</p>
