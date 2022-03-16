@@ -1,8 +1,8 @@
 import AxiosDefaults from 'axios';
-import { LanguageAndFramework } from '../types/languageAndFramework';
+import { Skill } from '../types/skill';
 import { Profile } from '../types/profile';
 import {
-  LanguageAndFrameworkResponse,
+  SkillResponse,
   ProfileResponse,
   WorksResponse,
 } from '../types/ResponseType';
@@ -29,12 +29,10 @@ export const fetchProfile = async (): Promise<Profile> => {
     });
 };
 
-export const fetchLanguageAndFrameworks = async (): Promise<
-  LanguageAndFramework[]
-> => {
+export const fetchSkills = async (): Promise<Skill[]> => {
   return await axios
     .get(`/${requests.languageAndFrameworks}`)
-    .then((res: LanguageAndFrameworkResponse) => {
+    .then((res: SkillResponse) => {
       return res.data.items;
     });
 };

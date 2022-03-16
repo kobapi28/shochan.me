@@ -1,4 +1,4 @@
-import { LanguageAndFramework } from './languageAndFramework';
+import { Skill } from './skill';
 import { Profile } from './profile';
 import { Works } from './works';
 
@@ -8,9 +8,9 @@ export type ProfileResponse = {
   };
 };
 
-export type LanguageAndFrameworkResponse = {
+export type SkillResponse = {
   data: {
-    items: LanguageAndFramework[];
+    items: Skill[];
   };
 };
 

@@ -1,4 +1,4 @@
-export type LanguageAndFramework = {
+export type Skill = {
   name: string;
   type: Type;
   level: string;

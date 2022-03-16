@@ -4,25 +4,21 @@ import Image from 'next/image';
 import About from '../components/about/About';
 import Skills from '../components/skill/Skills';
 import WorksComponent from '../components/works/Works';
-import {
-  fetchLanguageAndFrameworks,
-  fetchProfile,
-  fetchWorks,
-} from '../libs/fetch';
+import { fetchSkills, fetchProfile, fetchWorks } from '../libs/fetch';
 import styles from '../styles/Home.module.css';
-import { LanguageAndFramework } from '../types/languageAndFramework';
+import { Skill } from '../types/skill';
 import { Profile } from '../types/profile';
 import { Works } from '../types/works';
 import { eraseTags } from '../utils/eraseTags';
 
 type Props = {
   profile: Profile;
-  languageAndFrameworks: LanguageAndFramework[];
+  skills: Skill[];
   works: Works[];
 };
 
 // TODO: 画像urlを発行してくれないので、imgをどこか外部ストレージのファイルurlにするか、Google Cloud Storageと連携するか
-const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
+const Home: NextPage<Props> = ({ profile, skills, works }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -32,7 +28,7 @@ const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
         <h1 className={styles.title}>{profile.name}</h1>
         <About profile={profile} />
 
-        <Skills languageAndFrameworks={languageAndFrameworks} />
+        <Skills skills={skills} />
 
         <WorksComponent works={works} />
       </main>
@@ -45,12 +41,12 @@ const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const responses: Props = await Promise.all([
     fetchProfile(),
-    fetchLanguageAndFrameworks(),
+    fetchSkills(),
     fetchWorks(),
   ]).then((res) => {
     return {
       profile: res[0],
-      languageAndFrameworks: res[1],
+      skills: res[1],
       works: res[2],
     };
   });

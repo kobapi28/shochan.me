@@ -1,7 +1,7 @@
-import { LanguageAndFramework } from '../../types/languageAndFramework';
+import { Skill } from '../../types/skill';
 
 type Props = {
-  skill: LanguageAndFramework;
+  skill: Skill;
 };
 
 const Card: React.VFC<Props> = ({ skill }) => {
