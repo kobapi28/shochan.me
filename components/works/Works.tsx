@@ -1,4 +1,5 @@
 import { Works } from '../../types/works';
+import Card from './Card';
 
 type Props = {
   works: Works[];
@@ -9,7 +10,7 @@ const WorksComponent: React.VFC<Props> = ({ works }) => {
     <>
       <h2>works</h2>
       {works.map((item: Works) => {
-        return <p key={item.name}>{item.name}</p>;
+        return <Card works={item} key={item.name} />;
       })}
     </>
   );
