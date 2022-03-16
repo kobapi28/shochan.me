@@ -4,4 +4,4 @@ export type Skill = {
   level: string;
 };
 
-type Type = 'language' | 'framework' | 'library' | 'tool';
+export type Type = 'language' | 'framework' | 'library' | 'tool';

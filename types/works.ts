@@ -10,4 +10,4 @@ export type Works = {
   introduction: string;
 };
 
-type Role = 'Frontend' | 'Backend' | 'Design' | 'PM';
+export type Role = 'Frontend' | 'Backend' | 'Design' | 'PM';
