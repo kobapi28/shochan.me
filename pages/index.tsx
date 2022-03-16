@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import {
   fetchLanguageAndFrameworks,
   fetchProfile,
@@ -25,6 +26,7 @@ const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
         <title>{profile.title}</title>
       </Head>
       <main className={styles.main}>
+        <Image src={profile.profile.src} alt='' width={32} height={32} />
         <h1 className={styles.title}>{profile.name}</h1>
 
         <h2>about me</h2>
