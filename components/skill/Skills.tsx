@@ -9,9 +9,18 @@ const Skill: React.VFC<Props> = ({ skills }) => {
   return (
     <>
       <h2>skills</h2>
-      {skills.map((item: Skill) => {
-        return <Card skill={item} key={item.name} />;
-      })}
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '16px',
+          justifyContent: 'center',
+        }}
+      >
+        {skills.map((item: Skill) => {
+          return <Card skill={item} key={item.name} />;
+        })}
+      </div>
     </>
   );
 };

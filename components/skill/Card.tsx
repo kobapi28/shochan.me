@@ -8,12 +8,12 @@ type Props = {
 
 const Card: React.VFC<Props> = ({ skill }) => {
   return (
-    <>
+    <div style={{ textAlign: 'center', maxWidth: '200px' }}>
       <SkillIcon skillName={skill.name} />
       <p>{skill.name}</p>
       <Chip title={skill.type} />
       <p>{skill.level}</p>
-    </>
+    </div>
   );
 };
 
