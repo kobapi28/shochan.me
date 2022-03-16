@@ -7,7 +7,18 @@ type Props = {
 };
 
 const Chip: React.VFC<Props> = ({ title }) => {
-  return <p style={{ color: calculateColor(title) }}>{title}</p>;
+  return (
+    <span
+      style={{
+        color: '#fff',
+        backgroundColor: calculateColor(title),
+        padding: '4px 12px',
+        borderRadius: '16px',
+      }}
+    >
+      {title}
+    </span>
+  );
 };
 
 export default Chip;
