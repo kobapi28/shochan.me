@@ -10,17 +10,17 @@ export const calculateColor = (title: Type | Role) => {
   switch (title) {
     case 'Frontend':
     case 'language':
-      return 'blue';
+      return '#5060ee';
     case 'Backend':
     case 'library':
-      return 'red';
+      return '#669f52';
     case 'Design':
     case 'framework':
-      return 'yellow';
+      return '#c6bf1d';
     case 'PM':
     case 'tool':
-      return 'purple';
+      return '#c9489d';
     default:
-      return 'red';
+      return '#000';
   }
 };
