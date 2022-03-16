@@ -1,6 +1,13 @@
-const Terraform = () => {
+import IconProps from './iconPropsType';
+
+const Terraform: React.VFC<IconProps> = ({ width, height }) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 32 32'
+      height={height}
+      width={width}
+    >
       <title>file_type_terraform</title>
       <polygon
         points='12.042 6.858 20.071 11.448 20.071 20.462 12.042 15.868 12.042 6.858 12.042 6.858'

@@ -16,31 +16,34 @@ type Props = {
 };
 
 const SkillIcon: React.VFC<Props> = ({ skillName }) => {
+  const width = 32;
+  const height = 32;
+
   switch (skillName) {
     case 'Nextjs':
-      return <Next />;
+      return <Next width={width} height={height} />;
     case 'NestJS':
-      return <Nest />;
+      return <Nest width={width} height={height} />;
     case 'Angular':
-      return <Angular />;
+      return <Angular width={width} height={height} />;
     case 'React':
-      return <React />;
+      return <React width={width} height={height} />;
     case 'Vue':
-      return <Vue />;
+      return <Vue width={width} height={height} />;
     case 'Terraform':
-      return <Terraform />;
+      return <Terraform width={width} height={height} />;
     case 'AWS':
-      return <AWS />;
+      return <AWS width={width} height={height} />;
     case 'Docker':
-      return <Docker />;
+      return <Docker width={width} height={height} />;
     case 'PHP':
-      return <PHP />;
+      return <PHP width={width} height={height} />;
     case 'C++':
-      return <Cpp />;
+      return <Cpp width={width} height={height} />;
     case 'Kotlin':
-      return <Kotlin />;
+      return <Kotlin width={width} height={height} />;
     case 'TypeScript':
-      return <TypeScript />;
+      return <TypeScript width={width} height={height} />;
     default:
       return null;
   }
