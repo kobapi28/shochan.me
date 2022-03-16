@@ -1,4 +1,5 @@
 import { LanguageAndFramework } from '../../types/languageAndFramework';
+import Card from './Card';
 
 type Props = {
   languageAndFrameworks: LanguageAndFramework[];
@@ -9,7 +10,7 @@ const Skill: React.VFC<Props> = ({ languageAndFrameworks }) => {
     <>
       <h2>skills</h2>
       {languageAndFrameworks.map((item: LanguageAndFramework) => {
-        return <p key={item.name}>{item.name}</p>;
+        return <Card skill={item} key={item.name} />;
       })}
     </>
   );
