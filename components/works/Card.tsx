@@ -1,5 +1,6 @@
 import { Works } from '../../types/works';
 import Image from 'next/image';
+import { eraseTags } from '../../utils/eraseTags';
 
 type Props = {
   works: Works;
@@ -10,7 +11,7 @@ const Card: React.VFC<Props> = ({ works }) => {
     <>
       <p>{works.name}</p>
       <p>{works.role}</p>
-      <p>{works.introduction}</p>
+      <p>{eraseTags(works.introduction)}</p>
       <p>{works.github || 'undefined'}</p>
       <p>{works.slide || 'undefined'}</p>
       <p>{works.otherUrl || 'undefined'}</p>
