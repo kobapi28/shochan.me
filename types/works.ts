@@ -1,6 +1,8 @@
 export type Works = {
   name: string;
-  img: string;
+  image: {
+    src: string;
+  };
   role: Role[];
   github?: string;
   slide?: string;
