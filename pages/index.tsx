@@ -1,6 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import About from '../components/about/About';
+import Skills from '../components/skill/Skills';
+import WorksComponent from '../components/works/Works';
 import {
   fetchLanguageAndFrameworks,
   fetchProfile,
@@ -26,33 +29,12 @@ const Home: NextPage<Props> = ({ profile, languageAndFrameworks, works }) => {
         <title>{profile.title}</title>
       </Head>
       <main className={styles.main}>
-        <Image src={profile.profile.src} alt='' width={32} height={32} />
         <h1 className={styles.title}>{profile.name}</h1>
+        <About profile={profile} />
 
-        <h2>about me</h2>
-        <p className={styles.description}>{eraseTags(profile.comment)}</p>
+        <Skills languageAndFrameworks={languageAndFrameworks} />
 
-        <p className={styles.description}>{profile.github}</p>
-
-        <p className={styles.description}>{profile.twitter}</p>
-
-        <h2>skills</h2>
-        {languageAndFrameworks.map((item: LanguageAndFramework) => {
-          return (
-            <p key={item.name} className={styles.description}>
-              {item.name}
-            </p>
-          );
-        })}
-
-        <h2>works</h2>
-        {works.map((item: Works) => {
-          return (
-            <p key={item.name} className={styles.description}>
-              {item.name}
-            </p>
-          );
-        })}
+        <WorksComponent works={works} />
       </main>
 
       <footer className={styles.footer}>{profile.title}</footer>
