@@ -10,8 +10,15 @@ type Props = {
 
 const Card: React.VFC<Props> = ({ works }) => {
   return (
-    <>
-      <p>{works.name}</p>
+    <div style={{ maxWidth: '300px' }}>
+      <Image
+        src={works.image.src}
+        alt=''
+        objectFit='contain'
+        width={300}
+        height={200}
+      ></Image>
+      <h3>{works.name}</h3>
       {works.role.map((r) => {
         return <Chip title={r} key={r} />;
       })}
@@ -25,8 +32,7 @@ const Card: React.VFC<Props> = ({ works }) => {
       {works.otherUrl ? (
         <ExternalServiceLink title={works.otherUrl} type='other' />
       ) : null}
-      <Image src={works.image.src} alt='' width={300} height={200}></Image>
-    </>
+    </div>
   );
 };
 
