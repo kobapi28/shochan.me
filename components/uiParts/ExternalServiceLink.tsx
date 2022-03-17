@@ -14,21 +14,21 @@ const ExternalServiceLink: React.VFC<Props> = ({ title, type }) => {
       return (
         <>
           <Twitter width={32} height={32} />
-          <a href={'https://twitter.com/' + title}>{title}</a>
+          <a href={title}>{title}</a>
         </>
       );
     case 'github':
       return (
         <>
           <GitHub width={32} height={32} />
-          <a href={'https://github.com/' + title}>{title}</a>
+          <a href={title}>{title}</a>
         </>
       );
     default:
       return (
         <>
           <Link width={32} height={32} />
-          <a href={'https://twitter.com/' + title}>{title}</a>
+          <a href={title}>{title}</a>
         </>
       );
   }
