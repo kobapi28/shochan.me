@@ -7,6 +7,8 @@ const Terraform: React.VFC<IconProps> = ({ width, height }) => {
       viewBox='0 0 32 32'
       height={height}
       width={width}
+      role='img'
+      aria-label=''
     >
       <title>file_type_terraform</title>
       <polygon

@@ -2,7 +2,13 @@ import IconProps from './iconPropsType';
 
 const TypeScript: React.VFC<IconProps> = ({ width, height }) => {
   return (
-    <svg viewBox='0 0 128 128' width={width} height={height}>
+    <svg
+      viewBox='0 0 128 128'
+      width={width}
+      height={height}
+      role='img'
+      aria-label=''
+    >
       <path fill='#fff' d='M22.67 47h99.67v73.67H22.67z'></path>
       <path
         data-name='original'

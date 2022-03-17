@@ -7,6 +7,8 @@ const Twitter: React.VFC<IconProps> = ({ width, height }) => {
       width={width}
       height={height}
       viewBox='0 0 24 24'
+      role='img'
+      aria-label=''
     >
       <path
         fill='#1da1f2'
