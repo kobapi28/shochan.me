@@ -2,6 +2,7 @@ import Angular from '../icons/Angular';
 import AWS from '../icons/AWS';
 import Cpp from '../icons/Cpp';
 import Docker from '../icons/Docker';
+import Figma from '../icons/Figma';
 import Kotlin from '../icons/Kotlin';
 import Nest from '../icons/Nest';
 import Next from '../icons/Next';
@@ -44,6 +45,8 @@ const SkillIcon: React.VFC<Props> = ({ skillName }) => {
       return <Kotlin width={width} height={height} />;
     case 'TypeScript':
       return <TypeScript width={width} height={height} />;
+    case 'Figma':
+      return <Figma width={width} height={height} />;
     default:
       return null;
   }
