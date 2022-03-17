@@ -1,58 +1,25 @@
-import ExternalServiceType from '../../types/externalService';
-import GitHub from '../icons/GitHub';
-import Link from '../icons/Link';
-import Twitter from '../icons/Twitter';
+import { ExternalServiceLink } from '../../types/externalServiceLink';
+import { roleColor } from '../../utils/RoleColor';
+import Chip from './Chip';
 
 type Props = {
-  title: string;
-  type: ExternalServiceType;
+  link: ExternalServiceLink;
 };
 
-const ExternalServiceLink: React.VFC<Props> = ({ title, type }) => {
-  switch (type) {
-    case 'twitter':
-      return (
-        <div>
-          <Twitter width={32} height={32} />
-          <a
-            target='_blank'
-            rel='noreferrer'
-            href={title}
-            style={{ wordWrap: 'break-word' }}
-          >
-            {title}
-          </a>
-        </div>
-      );
-    case 'github':
-      return (
-        <div>
-          <GitHub width={32} height={32} />
-          <a
-            target='_blank'
-            rel='noreferrer'
-            href={title}
-            style={{ wordWrap: 'break-word' }}
-          >
-            {title}
-          </a>
-        </div>
-      );
-    default:
-      return (
-        <div>
-          <Link width={32} height={32} />
-          <a
-            target='_blank'
-            rel='noreferrer'
-            href={title}
-            style={{ wordWrap: 'break-word' }}
-          >
-            {title}
-          </a>
-        </div>
-      );
-  }
+const ExternalServiceLink: React.VFC<Props> = ({ link }) => {
+  return (
+    <div>
+      <Chip title={link.type} color={roleColor(link.type)} />
+      <a
+        target='_blank'
+        rel='noreferrer'
+        href={link.url}
+        style={{ wordWrap: 'break-word' }}
+      >
+        {link.url}
+      </a>
+    </div>
+  );
 };
 
 export default ExternalServiceLink;

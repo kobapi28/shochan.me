@@ -1,12 +1,32 @@
 import { SkillRole } from '../types/skill';
 import { PositionRole, MediaRole } from '../types/works';
 
+export const roleColor = (role: PositionRole | SkillRole | MediaRole) => {
+  if (
+    role === 'Frontend' ||
+    role === 'Backend' ||
+    role === 'Design' ||
+    role === 'PM'
+  ) {
+    return calculatePositionRoleColor(role);
+  } else if (
+    role === 'language' ||
+    role === 'library' ||
+    role === 'framework' ||
+    role === 'tool'
+  ) {
+    return calculateSkillRoleColor(role);
+  } else {
+    return calculateMediaRoleColor(role);
+  }
+};
+
 /**
  * positionRoleを受け取って、それに応じた色を返す
  * @param role
  * @returns
  */
-export const calculatePositionRoleColor = (role: PositionRole) => {
+const calculatePositionRoleColor = (role: PositionRole) => {
   switch (role) {
     case 'Frontend':
       return '#5060ee';
@@ -26,7 +46,7 @@ export const calculatePositionRoleColor = (role: PositionRole) => {
  * @param role
  * @returns
  */
-export const calculateSkillRoleColor = (role: SkillRole) => {
+const calculateSkillRoleColor = (role: SkillRole) => {
   switch (role) {
     case 'language':
       return '#5060ee';
@@ -46,7 +66,7 @@ export const calculateSkillRoleColor = (role: SkillRole) => {
  * @param role
  * @returns
  */
-export const calculateMediaRoleColor = (role: MediaRole) => {
+const calculateMediaRoleColor = (role: MediaRole) => {
   switch (role) {
     case 'slide':
       return '#087213';

@@ -1,17 +1,14 @@
-import { Type } from '../../types/skill';
-import { Role } from '../../types/works';
-import { calculateColor } from '../../utils/RoleColor';
-
 type Props = {
-  title: Type | Role;
+  title: string;
+  color: string;
 };
 
-const Chip: React.VFC<Props> = ({ title }) => {
+const Chip: React.VFC<Props> = ({ title, color }) => {
   return (
     <span
       style={{
         color: '#fff',
-        backgroundColor: calculateColor(title),
+        backgroundColor: color,
         padding: '4px 12px',
         borderRadius: '16px',
       }}
