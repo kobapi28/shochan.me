@@ -1,7 +1,7 @@
 export type Skill = {
   name: string;
-  type: Type;
+  type: SkillRole;
   level: string;
 };
 
-export type Type = 'language' | 'framework' | 'library' | 'tool';
+export type SkillRole = 'language' | 'framework' | 'library' | 'tool';

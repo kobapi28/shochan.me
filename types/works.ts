@@ -1,13 +1,14 @@
+import { ExternalServiceLink } from './externalServiceLink';
+
+export type PositionRole = 'Frontend' | 'Backend' | 'Design' | 'PM';
+export type MediaRole = 'github' | 'twitter' | 'news' | 'youtube' | 'slide';
+
 export type Works = {
   name: string;
   image: {
     src: string;
   };
-  role: Role[];
-  github?: string;
-  slide?: string;
-  otherUrl?: string;
+  role: PositionRole[];
   introduction: string;
+  externalServiceLinks: ExternalServiceLink[];
 };
-
-export type Role = 'Frontend' | 'Backend' | 'Design' | 'PM';
