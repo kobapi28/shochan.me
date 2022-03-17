@@ -5,6 +5,7 @@ import Chip from '../uiParts/Chip';
 import ExternalServiceLink from '../uiParts/ExternalServiceLink';
 import { roleColor } from '../../utils/RoleColor';
 import { ExternalServiceLink as ExternalServiceLinkType } from '../../types/externalServiceLink';
+import LinkButton from '../uiParts/LinkButton';
 
 type Props = {
   works: Works;
@@ -26,7 +27,7 @@ const Card: React.VFC<Props> = ({ works }) => {
       })}
       <p>{eraseTags(works.introduction)}</p>
       {works.externalServiceLinks.map((link: ExternalServiceLinkType) => {
-        return <ExternalServiceLink link={link} key={link.url} />;
+        return <LinkButton link={link} key={link.url} />;
       })}
     </div>
   );
